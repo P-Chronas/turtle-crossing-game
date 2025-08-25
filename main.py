@@ -23,7 +23,15 @@ screen.tracer(0)
 player = Player()
 
 # set up cars
-car = Car()
+y_positions = list(range(Y_LIMIT_DOWN + MOVING_INCREMENTS, Y_LIMIT_UP, MOVING_INCREMENTS))  # [-260 to 260] list
+random_no = range(300,900,5)
+
+car_list = []
+for y in y_positions:
+    random_x = random.choice(random_no)
+    print(random_x)
+    car = Car(random_x,y)
+    car_list.append(car)
 
 # player movement
 screen.listen()
@@ -36,15 +44,16 @@ while game_is_on:
     screen.update()
     time.sleep(0.05)  # delay refresh (makes game faster/slower)
 
-    car.auto_move()
-    # collision (use distance of player to distance of car to trigger collision)
-    if player.distance(car.xcor(), car.ycor()) <= 0.1:
-        print("hit")
-        # game_is_on = False
+    for car in car_list:
+        car.auto_move()
+        # collision (use distance of player to distance of car to trigger collision)
+        # if player.distance(car.xcor(), car.ycor()) <= 0.1:
+        #     print("hit")
+        #     # game_is_on = False
 
-    # trigger win
-    if player.ycor() >= Y_LIMIT_UP:
-        print("game won!")
+        # trigger win
+        if player.ycor() >= Y_LIMIT_UP:
+            print("game won!")
 
 # leave as last bit of code
 screen.exitonclick()
