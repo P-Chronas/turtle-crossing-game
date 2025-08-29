@@ -4,7 +4,6 @@ DOWN = 270
 RIGHT = 0
 LEFT = 180
 
-TURTLE_SIZE = 20
 MOVING_INCREMENTS = 20
 
 # screen constants

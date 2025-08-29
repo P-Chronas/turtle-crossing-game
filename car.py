@@ -12,8 +12,8 @@ class Car(Turtle):
         self.shapesize(stretch_wid=None, stretch_len=1.5)
         self.goto(x_pos,y_pos)
 
-    def auto_move(self): # cars to auto-move and then re-appear on right side when left wall is reached
+    def auto_move(self,value): # cars to auto-move and then re-appear on right side when left wall is reached
         if self.xcor() > X_LIMIT_LEFT-40: # -40 to allow cars to move past left wall before disappearing
-            self.forward(MOVING_INCREMENTS/4)
+            self.forward(MOVING_INCREMENTS/value)
         else:
             self.goto(-self.xcor() + 20, self.ycor())
